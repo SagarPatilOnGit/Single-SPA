@@ -73,11 +73,23 @@
   <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
   <% } %>
 
-
+  <template id="single-spa-layout">
+    <single-spa-router>
+      <div class="main-content">
+        <div class="app1">
+          <application name="@sagar/react"></application>
+        </div>
+         <div class="app2">
+          <application name="angular"></application>
+         </div>
+         
+      </div>
+    </single-spa-router>
+  </template>
 </head>
 <body>
   <style>
-    .navbar {
+    /* .navbar {
       position: fixed;
       top: 0;
       left: 0;
@@ -106,9 +118,20 @@
     .navbar a {
       text-decoration: none;
       color: white;
+    } */
+    .main-content {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+    }
+    .app1 {
+      background-color: rgb(175, 175, 33);
+    }
+
+    .app2 {
+      background-color: #40c769;
     }
   </style>
-  <div class="navbar">
+  <!-- <div class="navbar">
     <ul>
       <a onclick="singleSpaNavigate('/react')">
         <li>
@@ -121,7 +144,9 @@
         </li>
       </a>
     </ul>
-  </div>
+  </div> -->
+  <!-- <div id="single-spa-application:react"></div>
+<div id="single-spa-application:angular"></div> -->
   <script>
     System.import('@sagar/root-config');
   </script>

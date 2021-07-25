@@ -1,7 +1,31 @@
-<single-spa-router>
+<!-- <single-spa-router>
   <main>
     <route default>
         <application name="@sagar/react"></application>
     </route>
   </main>
-</single-spa-router>
+</single-spa-router> -->
+
+
+<!-- <html>
+  <head> -->
+    <template id="single-spa-layout">
+      <single-spa-router>
+        <!-- <nav class="topnav">
+          <application name="@organization/nav"></application>
+        </nav> -->
+        <div class="main-content">
+          <!-- <route path="settings"> -->
+            <application name="@sagar/react"></application>
+          <!-- </route> -->
+          <!-- <route path="clients"> -->
+            <application name="angular"></application>
+          <!-- </route> -->
+        </div>
+        <!-- <footer>
+          <application name="@organization/footer"></application>
+        </footer> -->
+      </single-spa-router>
+    </template>
+  <!-- </head>
+</html> -->

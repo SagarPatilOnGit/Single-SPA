@@ -1,20 +1,37 @@
-// TODO add react app
+
+// import { registerApplication, start } from "single-spa";
+
+// registerApplication({
+//   name: "@sagar/react",
+//   app: () => System.import("@sagar/react"),
+//   // activeWhen: ["/react"],
+// });
+
+// registerApplication({
+//   name: "angular",
+//   app: () => System.import("angular"),
+//   // activeWhen: ["/angular"],
+// });
+// start({
+//   urlRerouteOnly: true,
+// });
 
 
-import { registerApplication, start } from "single-spa";
+import { registerApplication, start } from 'single-spa';
+import {
+  constructApplications,
+  constructRoutes,
+  constructLayoutEngine,
+} from 'single-spa-layout';
 
-registerApplication({
-  name: "@sagar/react",
-  app: () => System.import("@sagar/react"),
-  activeWhen: ["/react"],
+const routes = constructRoutes(document.querySelector('#single-spa-layout'));
+const applications = constructApplications({
+  routes,
+  loadApp({ name }) {
+    return System.import(name);
+  },
 });
+const layoutEngine = constructLayoutEngine({ routes, applications });
 
-registerApplication({
-  name: "angular",
-  app: () => System.import("angular"),
-  activeWhen: ["/angular"],
-});
-
-start({
-  urlRerouteOnly: true,
-});
+applications.forEach(registerApplication);
+start();
